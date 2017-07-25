@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>刮刮乐</title>
+	<style type="text/css">
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	canvas{
+		border: 1px solid black;
+	}
+
+	</style>
+</head>
+<body>
+	<canvas width="480" height="640"></canvas>
+	<script src="jquery.js"></script>
+	<script type="text/javascript">
+	var canvas = document.getElementsByTagName('canvas')[0];
+	var ctx = canvas.getContext('2d');
+	if (Math.random() < 0.8) {
+		$('canvas').css('backgroundImage', 'url("谢谢惠顾.jpg")');
+	}else {
+		$('canvas').css('backgroundImage', 'url("中奖.jpg")');
+	}
+	
+	ctx.beginPath();
+	ctx.fillStyle = 'gray';
+	ctx.fillRect(0, 0, 480, 640);
+	$('canvas').on('mousedown', function (e) {
+		eraser(e);
+		$(document).on('mousemove', function (e) {
+			eraser(e);
+		})
+	});
+	$(document).on('mouseup', function () {
+		clear_canvas();
+		$(document).off('mousemove');
+	});
+	function eraser (eventObj) {
+		var x = eventObj.clientX,
+			y = eventObj.clientY;
+		ctx.beginPath();
+		ctx.arc(x, y, 30, 0, Math.PI/180 * 360, 0);
+		ctx.fill();
+		ctx.globalCompositeOperation = 'destination-out';
+	}
+	function clear_canvas () {
+		var area = ctx.getImageData(0, 0, 480, 640),
+			data = area.data,
+			len = data.length,
+			auto = len / 4 * 0.7,
+			count = 0;
+
+		for(var i = 0; i < len; i += 4) {
+			if (data[i + 3] == 0) {
+				count ++;
+				if (count > auto) {
+					ctx.clearRect(0, 0, 480, 640);
+					return false;
+				};
+			};
+		}
+	}
+	</script>
+</body>
+</html>

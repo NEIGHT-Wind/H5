@@ -1,0 +1,52 @@
+svg{
+	border: 1px solid black;
+}
+circle{
+	stroke: #000;
+	fill: #fff;
+	stroke-width: 2px;
+}
+path{
+	stroke: #000;
+	fill: #fff;
+	stroke-width: 2px;
+}
+line{
+	stroke: #000;
+}
+#head{
+	fill: blue;
+}
+#body{
+	fill: blue;
+}
+.arm{
+	fill: blue;
+}
+.s_eyes{
+	stroke: #000;
+	stroke-width: 12px;
+	stroke-linecap: round;
+}
+#nose{
+	fill: red;
+}
+#s_nose{
+	stroke: #fff;
+	stroke-width: 12px;
+	stroke-linecap: round;
+}
+#mouse{
+	stroke-width: 1px;
+}
+#collar{
+	fill: red;
+	stroke: #000;
+	stroke-width: 2px;
+}
+#bell{
+	fill: yellow;
+}
+#s_bell{
+	fill: #000;
+}
